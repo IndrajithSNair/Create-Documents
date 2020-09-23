@@ -1,0 +1,50 @@
+
+<div class="container">
+ 
+
+  <button class="btn btn-outline-sucess my-2 my-sm-0" type="button" style="margin-left:700px;margin-right:20px;margin-top: 75px;height:50px;width:500px"><a href="documents/add" style="color:white;"><h6><b>Create New Document >>></b></h6></a></button>
+</div>
+    
+<div>
+    <form action="documents/search" method="POST" class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" name="keyword" placeholder="Search" aria-label="Search" />
+        <button class="btn btn-outline-sucess my-2 my-sm-0" type="submit">Search</button>
+    </form>
+   
+</div>
+<h3>Dashboard</h3>
+
+<p>Here are the Documents:</p>
+{{#if documents}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th></th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {{#each documents}}
+        <tr>
+            <td><a href="/documents/{{_id}}">{{title}}</a></td>
+            <td>{{formatDate createdAt 'MMMM Do YYYY, h:mm:ss a'}}</td>
+            <td><a href="/documents/edit/{{_id}}" class="btn btn-float">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <form action="/documents/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="btn red">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<p>No Documents Created.....</p>
+{{/if}}

@@ -1,0 +1,28 @@
+<h3>Edit Document</h3>
+<div class="row">
+    
+    <form action="/documents/{{docs._id}}" method="POST" class="col s12">
+    <input type="hidden" name="_method" value="PUT">
+        <div class="row">
+            <div class="input-field">
+                <input type="text" id="title" name="title" value={{docs.title}}>
+                <label for="title">Title</label>
+            </div>
+        </div>
+
+        
+
+        <div class="row">
+            <div class="input-field">
+                <h5>Enter the Content:</h5>
+                <textarea id="body" name="body">{{docs.body}}</textarea>
+            </div>
+        </div>
+        
+        <div class="row">
+            <input type="submit" value="update" class="btn">
+            <a href="/" class="btn orange">Cancel</a>
+        </div>
+    </form>
+    
+</div>
