@@ -90,29 +90,7 @@ router.put('/:id',  async (req, res) => {
     return res.render('error/500')
   }
 })
-// @desc    Search Document
-// @route   POST /documents/search
-router.post("/search",async(req,res) =>{
-  
-  console.log(req.body)
-  const title = req.body.keyword;
-  console.log(title)
-  try {
-    let doc =await Document.findOne({ title: title }).lean()
-    if (!doc) {
-      return res.render('error/404')
-    }
-    else {
-      res.render('documents/show', {
-        doc,
-      })
-    }
-  } catch (err) {
-    console.error(err)
-    res.render('error/404')
-  }
-  
-  })
+
 // @desc    Delete Document
 // @route   DELETE /documents/:id
 router.delete('/:id',  async (req, res) => {
